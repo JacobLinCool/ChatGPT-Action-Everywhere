@@ -1,0 +1,65 @@
+openapi: 3.0.0
+info:
+    title: NTNU CSIE News API
+    version: 0.0.0
+    description: The API to list or get the news from NTNU CSIE
+servers:
+    - url: https://chaction.csie.cool/https%3A%2F%2Fwww.csie.ntnu.edu.tw/
+
+paths:
+    /index.php/news/:
+        get:
+            summary: The latest news list
+            operationId: list
+            responses:
+                "200":
+                    description: ok
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    content:
+                                        type: string
+                                        description: The page content
+
+    /index.php/{year}/{month}/{day}/{slug}/:
+        get:
+            summary: Get the news detail
+            operationId: fetch
+            parameters:
+                - name: year
+                  in: path
+                  description: The year
+                  required: true
+                  schema:
+                      type: integer
+                - name: month
+                  in: path
+                  description: The month
+                  required: true
+                  schema:
+                      type: integer
+                - name: day
+                  in: path
+                  description: The day
+                  required: true
+                  schema:
+                      type: integer
+                - name: slug
+                  in: path
+                  description: The slug
+                  required: true
+                  schema:
+                      type: string
+            responses:
+                "200":
+                    description: ok
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    content:
+                                        type: string
+                                        description: The page content

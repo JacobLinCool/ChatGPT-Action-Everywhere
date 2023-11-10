@@ -1,0 +1,6 @@
+name = "chatgpt-action-everywhere"
+main = "src/index.ts"
+compatibility_date = "2023-10-30"
+
+[limits]
+cpu_ms = 50
