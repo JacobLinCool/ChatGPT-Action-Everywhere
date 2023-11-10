@@ -6,6 +6,13 @@ export default {
 		const url = new URL(request.url);
 		console.log(url);
 
+		if (url.pathname === "/") {
+			return Response.redirect(
+				"https://github.com/JacobLinCool/ChatGPT-Action-Everywhere/#readme",
+				301,
+			);
+		}
+
 		let [, origin, ...paths] = url.pathname.split("/");
 		origin = decodeURIComponent(origin);
 		const path = paths.filter(Boolean).join("/");
