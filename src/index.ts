@@ -17,6 +17,11 @@ export default {
 		origin = decodeURIComponent(origin);
 		const path = paths.filter(Boolean).join("/");
 		console.log({ origin, path });
+		try {
+			new URL(origin);
+		} catch {
+			return new Response("Invalid origin", { status: 400 });
+		}
 
 		const res =
 			request.method.toUpperCase() === "GET"
